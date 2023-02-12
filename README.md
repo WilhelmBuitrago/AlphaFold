@@ -30,8 +30,8 @@ Y posteriormente revisar que el Hardware accelerator se encuentre en GPU (No deb
 Luego de verificar el tipo de procesador el cual se esté utilizando (GPU), se puede iniciar a
 [Instalar dependencias en este link](Archives/Descarga_de_dependencias.txt), debe de copiar el código que se encuentra dentro del mismo y pegarlo en una celda de Google Colab:
 
-![copy1](Archives/Cpy_1.jpg)
-![copy2](Archives/Cpy_2.jpg)
+![Cpy_1](Archives/Cpy_1.jpg)
+![Cpy_2](Archives/Cpy_2.jpg)
 Posteriormente ejecute el código de la celda que acaba de pegar.
 
 #### 2.2. Descarga de AlphaFold
