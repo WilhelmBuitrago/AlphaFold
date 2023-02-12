@@ -1,4 +1,4 @@
 # AlphaFold
 LGJLKASJGLASJGLSAJLGAI COLAB.
 
-[Instalar dependencias](Archives/Descarga_de_dependencias)
+[Instalar dependencias](Archives/Descarga_de_dependencias.txt)
