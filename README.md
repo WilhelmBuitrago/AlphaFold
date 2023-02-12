@@ -1,3 +1,4 @@
 # AlphaFold
-LGJLKASJGLASJGLSAJLGAI COLAB
+LGJLKASJGLASJGLSAJLGAI COLAB.
+
 [Instalar dependencias](/Instalación_de_dependencias)
