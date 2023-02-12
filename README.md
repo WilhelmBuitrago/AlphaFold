@@ -7,7 +7,7 @@ Este google colab de una versión simplificada de AlphaFold permite ingresar has
 
 Se hará uso del entorno de trabajo de Google Colab, para ello se tendrán que realizar los siguientes pasos:
 
-#1. Iniciar un nuevo entorno de trabajo
+### 1. Iniciar un nuevo entorno de trabajo
 
 Para iniciar un nuevo cuaderno de trabajo en Google Colab se debe ingresar al siguientes [link](https://colab.research.google.com/?hl=es)
 
