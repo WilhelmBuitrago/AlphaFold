@@ -13,9 +13,15 @@ Para iniciar un nuevo cuaderno de trabajo en Google Colab se debe ingresar al si
 
 Lo primero que debemos tener en cuenta es si el enterno de trabajo se encuentra utilizando la GPU, para ello debemos conectar el entorno de trabajo:
 
+![VerfGPU1](imgs/VerfGPU_1.jpg)
+
 Cuando conecte le volveremos a dar click en RAM y Disk:
 
+![VerfGPU2](imgs/VerfGPU_2.jpg)
+
 Después en Change runtime type:
+
+![VerfGPU3](imgs/VerfGPU_3.jpg)
 
 Y posteriormente revisar que el Hardware accelerator se encuentre en GPU (No debe seleccionar None o TPU), sino ocasionará un error a la hora de ejecutar el código:
 
