@@ -48,6 +48,7 @@ Para crear una nueva celda en Google Colab, podemos usar el atajo de teclado Con
 Para iniciar la predicción debe de copiar el contenido de [este archivo](Archive/Hacer_prediccion) y pegarlo en una nueva celda de Google colab. Luego debe proporcionar en el espacio indicado la secuencia(s) de aminoácido(s) a la que usted desea conocer su estructura tridimensional: 
 
 ![ejmeplo1](imgs/Ejemplo.jpg)
+
 Si solamente se inserta una sola entrada se usará el modelo Monomer, si proporcionas multiples entradas, será usado el modelo Multimer. Si se quiere utilizar el modo multimer para una sola entrada se debe activar la casilla use_multimer_model_for_monomers.
 
 ![model1](imgs/model.jpg)
