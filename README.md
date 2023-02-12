@@ -1,13 +1,15 @@
 # AlphaFold
-LGJLKASJGLASJGLSAJLGAI COLAB.
-Para las predicciones de AlphaFold se hara uso de el entorno de trabajo Google Colab. Para ello se debe de iniciar un [nuevo cuaderno de trabajo](https://colab.research.google.com/?hl=es).
 
-[Instalar dependencias](Archives/Descarga_de_dependencias.txt).
+## Descripción
 
-[Descargar AlphaFold](Archives/Descargar_de_AlphaFold.txt).
+Este google colab de una versión simplificada de AlphaFold permite ingresar hasta 20 secuencias de aminoacidos, con las cueales realiza una búsqueda de secuencias similares en diferentes bases de datos y una predicción de la estructura tridimensional de la proteina resultante.
 
-[Comenzar predicción](Archives/Hacer_prediccion.txt).
+## Pasos a seguir
 
-[Busqueda en base de datos](Archives/Busqueda_y_prediccion_en_la_base_de_datos.txt).
+Ingresar al colab con el siguiente [link](https://colab.research.google.com/drive/11m4F8GwdiBjS-RTXhP4uPsk-0YZyF_yJ?usp=sharing).
 
-[Ver predicción](/Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt).
+Encontraras una pequeña descripción del programa, documentación y detalles a tener en cuenta.
+
+[Instalar dependencias](/Instalación_de_dependencias)
+
+Any publication that discloses findings arising from using this source code or the model parameters should cite the AlphaFold paper and, if applicable, the AlphaFold-Multimer paper.
