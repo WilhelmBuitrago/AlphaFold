@@ -1,5 +1,6 @@
 # AlphaFold
 LGJLKASJGLASJGLSAJLGAI COLAB.
+Para las predicciones de AlphaFold se hara uso de el entorno de trabajo Google Colab. Para ello se debe de iniciar un [nuevo cuaderno de trabajo](https://colab.research.google.com/?hl=es).
 
 [Instalar dependencias](Archives/Descarga_de_dependencias.txt).
 
