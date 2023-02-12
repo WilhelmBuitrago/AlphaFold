@@ -1,0 +1,63 @@
+# Set environment variables before running any other code.
+import os
+os.environ['TF_FORCE_UNIFIED_MEMORY'] = '1'
+os.environ['XLA_PYTHON_CLIENT_MEM_FRACTION'] = '4.0'
+
+#@title 1. Descargar aplicaciones de terceros
+
+#@markdown Ejecuta esta celda presionando el boton **Play**
+#@markdown que se cuentra a la izquierda de este texto.
+#@markdown Se intalaran aplicaciones de terceros como: Linux, Anaconda, etc.
+#@markdown Al igual se modificaran variables del entorno de Google Colab.
+
+#@markdown **Nota**: Esta instalación **NO** se relizara en su equipo, sino en el entorno de trabajo de Google Colab.
+#@markdown Estas modificaciones se eliminaran si usted: Reinicia el entorno de Google Colab, cierra la pagina donde se encuentra el entorno de trabajo,
+#@markdown se desconecta o pierde la conexión con el servidor de Google Colab.
+from IPython.utils import io
+import os
+import subprocess
+import tqdm.notebook
+
+TQDM_BAR_FORMAT = '{l_bar}{bar}| {n_fmt}/{total_fmt} [Transcurrido: {elapsed} Restante: {remaining}]'
+
+try:
+  with tqdm.notebook.tqdm(total=100, bar_format=TQDM_BAR_FORMAT) as pbar:
+    with io.capture_output() as captured:
+      # Uninstall default Colab version of TF.
+      %shell pip uninstall -y tensorflow
+
+      %shell sudo apt install --quiet --yes hmmer
+      pbar.update(6)
+
+      # Install py3dmol.
+      %shell pip install py3dmol
+      pbar.update(2)
+
+      # Install OpenMM and pdbfixer.
+      %shell rm -rf /opt/conda
+      %shell wget -q -P /tmp \
+        https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+          && bash /tmp/Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+          && rm /tmp/Miniconda3-latest-Linux-x86_64.sh
+      pbar.update(9)
+      
+      PATH=%env PATH
+      %env PATH=/opt/conda/bin:{PATH}
+      %shell conda install -qy conda==4.13.0 \
+          && conda install -qy -c conda-forge \
+            python=3.8 \
+            openmm=7.5.1 \
+            pdbfixer
+      pbar.update(80)
+
+      # Create a ramdisk to store a database chunk to make Jackhmmer run fast.
+      %shell sudo mkdir -m 777 --parents /tmp/ramdisk
+      %shell sudo mount -t tmpfs -o size=9G ramdisk /tmp/ramdisk
+      pbar.update(2)
+
+      %shell wget -q -P /content \
+        https://git.scicore.unibas.ch/schwede/openstructure/-/raw/7102c63615b64735c4941278d92b554ec94415f8/modules/mol/alg/src/stereo_chemical_props.txt
+      pbar.update(1)
+except subprocess.CalledProcessError:
+  print(captured)
+  raise
