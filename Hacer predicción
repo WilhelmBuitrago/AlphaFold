@@ -1,0 +1,103 @@
+#@title 3. Colocar la secuencia ⬇️
+#@markdown Coloca la secuencia de aminoacidos/s:
+#@markdown * Si solamente se inserta una sola entrada se usara el modelo **Monomer**
+#@markdown (Al menos hasta que fuerce el uso del modelo **Multimer**).
+#@markdown * Si proporcionas multiples entradas, será usado el modelo **Multimer**.
+
+#@markdown Seleccione la siguiente casilla de verificación para ejecutar el modelo 
+#@markdown **Multimer** para una sola secuencia. Para las proteínas que son 
+#@markdown monoméricas en su forma nativa, o para cadenas simples muy grandes, 
+#@markdown puede obtener una mejor precisión y eficiencia de la memoria 
+#@markdown utilizando el modelo **Multimer**.
+
+use_multimer_model_for_monomers = False #@param {type:"boolean"}
+
+#@markdown Cabe destacar que por eficiencia en la memoria, el modelo **Multimer**
+#@markdown solo acepta un máximo de **4000** caracteres, mientras que el modelo **Monomer**
+#@markdown presenta un limite de **2500** caracteres. De igual forma el mínimo de caracteres 
+#@markdown es de **16**.
+
+
+
+from alphafold.notebooks import notebook_utils
+import enum
+
+@enum.unique
+class ModelType(enum.Enum):
+  MONOMER = 0
+  MULTIMER = 1
+
+secuencia_1 = ''  #@param {type:"string"}
+secuencia_2 = 'MAAHKGAEHHHKAAEHHEQAAKHHHAAAEHHEKGEHEQAAHHADTAYAHHKHAEEHAAQAAKHDAEHHAPKPH'  #@param {type:"string"}
+secuencia_3 = ''  #@param {type:"string"}
+secuencia_4 = ''  #@param {type:"string"}
+secuencia_5 = ''  #@param {type:"string"}
+secuencia_6 = ''  #@param {type:"string"}
+secuencia_7 = ''  #@param {type:"string"}
+secuencia_8 = ''  #@param {type:"string"}
+secuencia_9 = ''  #@param {type:"string"}
+secuencia_10 = ''  #@param {type:"string"}
+secuencia_11 = ''  #@param {type:"string"}
+secuencia_12 = ''  #@param {type:"string"}
+secuencia_13 = ''  #@param {type:"string"}
+secuencia_14 = ''  #@param {type:"string"}
+secuencia_15 = ''  #@param {type:"string"}
+secuencia_16 = ''  #@param {type:"string"}
+secuencia_17 = ''  #@param {type:"string"}
+secuencia_18 = ''  #@param {type:"string"}
+secuencia_19 = ''  #@param {type:"string"}
+secuencia_20 = ''  #@param {type:"string"}
+
+input_sequences = (
+    sequence_1, sequence_2, sequence_3, sequence_4, sequence_5, 
+    sequence_6, sequence_7, sequence_8, sequence_9, sequence_10,
+    sequence_11, sequence_12, sequence_13, sequence_14, sequence_15, 
+    sequence_16, sequence_17, sequence_18, sequence_19, sequence_20)
+
+MIN_PER_SEQUENCE_LENGTH = 16
+MAX_PER_SEQUENCE_LENGTH = 4000
+MAX_MONOMER_MODEL_LENGTH = 2500
+MAX_LENGTH = 4000
+MAX_VALIDATED_LENGTH = 3000
+
+
+
+
+
+# Validate the input sequences.
+sequences = notebook_utils.clean_and_validate_input_sequences(
+    input_sequences=input_sequences,
+    min_sequence_length=MIN_PER_SEQUENCE_LENGTH,
+    max_sequence_length=MAX_PER_SEQUENCE_LENGTH)
+
+if len(sequences) == 1:
+  if use_multimer_model_for_monomers:
+    print('Segun lo solicitado, se usa el modelo Multimer para una sola cadena.')
+    model_type_to_use = ModelType.MULTIMER
+  else:
+    print('Usando el modelo Monomer para una sola cadena.')
+    model_type_to_use = ModelType.MONOMER
+else:
+  print(f'Usando el modelo Multimer para {len(sequences)} secuencias.')
+  model_type_to_use = ModelType.MULTIMER
+
+# Check whether total length exceeds limit.
+total_sequence_length = sum([len(seq) for seq in sequences])
+if total_sequence_length > MAX_LENGTH:
+  raise ValueError('El valor total de la secuencia es demasiado largo: '
+                   f'{total_sequence_length}, mientras que el maximo es '
+                   f'{MAX_LENGTH}.')
+
+# Check whether we exceed the monomer limit.
+if model_type_to_use == ModelType.MONOMER:
+  if len(sequences[0]) > MAX_MONOMER_MODEL_LENGTH:
+    raise ValueError(
+        f'La secuencia es demasiado larga: {len(sequences[0])} aminoacidos, mientras'
+        f'que el maximo para el modelo Monomer es de {MAX_MONOMER_MODEL_LENGTH}. Para '
+        'ejecutar esta cadena deberia de forzar el modelo Multimer para una sola secuencia')
+    
+if total_sequence_length > MAX_VALIDATED_LENGTH:
+  print('PELIGRO: La precision del sistema no ha sido valorada y puede estar comprometida '
+        'por encima de los 3000 caracteres, y podria experimentar largos tiempo de ejecución '
+        f'o quedarse sin memoria. El total de la secuencia es de {total_sequence_length}'
+        'caracteres.')
