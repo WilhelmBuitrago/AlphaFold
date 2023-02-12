@@ -1,0 +1,62 @@
+#@title 2. Descargar AlphaFold
+
+#@markdown Por favor ejecute esta celda con el boton **Play** que se encuentra a la derecha.
+#@markdown Se intalará AlphaFold desde su repositorio en GitHub.
+
+#@markdown **Nota**: Esta instalación **NO** se relizara en su equipo, sino en el entorno de trabajo de Google Colab.
+#@markdown Estas modificaciones se eliminaran si usted: Reinicia el entorno de Google Colab, cierra la pagina donde se encuentra el entorno de trabajo,
+#@markdown se desconecta o pierde la conexión con el servidor de Google Colab.
+
+GIT_REPO = 'https://github.com/deepmind/alphafold'
+SOURCE_URL = 'https://storage.googleapis.com/alphafold/alphafold_params_colab_2022-12-06.tar'
+PARAMS_DIR = './alphafold/data/params'
+PARAMS_PATH = os.path.join(PARAMS_DIR, os.path.basename(SOURCE_URL))
+
+try:
+  with tqdm.notebook.tqdm(total=100, bar_format=TQDM_BAR_FORMAT) as pbar:
+    with io.capture_output() as captured:
+      %shell rm -rf alphafold
+      %shell git clone --branch main {GIT_REPO} alphafold
+      pbar.update(8)
+      # Install the required versions of all dependencies.
+      %shell pip3 install -r ./alphafold/requirements.txt
+      # Run setup.py to install only AlphaFold.
+      %shell pip3 install --no-dependencies ./alphafold
+      pbar.update(10)
+
+      # Apply OpenMM patch.
+      %shell pushd /opt/conda/lib/python3.8/site-packages/ && \
+          patch -p0 < /content/alphafold/docker/openmm.patch && \
+          popd
+
+      # Make sure stereo_chemical_props.txt is in all locations where it could be searched for.
+      %shell mkdir -p /content/alphafold/alphafold/common
+      %shell cp -f /content/stereo_chemical_props.txt /content/alphafold/alphafold/common
+      %shell mkdir -p /opt/conda/lib/python3.8/site-packages/alphafold/common/
+      %shell cp -f /content/stereo_chemical_props.txt /opt/conda/lib/python3.8/site-packages/alphafold/common/
+
+      # Load parameters
+      %shell mkdir --parents "{PARAMS_DIR}"
+      %shell wget -O "{PARAMS_PATH}" "{SOURCE_URL}"
+      pbar.update(27)
+
+      %shell tar --extract --verbose --file="{PARAMS_PATH}" \
+        --directory="{PARAMS_DIR}" --preserve-permissions
+      %shell rm "{PARAMS_PATH}"
+      pbar.update(55)
+except subprocess.CalledProcessError:
+  print(captured)
+  raise
+
+import jax
+if jax.local_devices()[0].platform == 'tpu':
+  raise RuntimeError('No se puede ejecutar en la TPU. Cambie el modo de ejecucion a GPU (Ir a la seccion 6).')
+elif jax.local_devices()[0].platform == 'cpu':
+  raise RuntimeError('No se puede ejecutar en la CPU. Cambie el modo de ejecucion a GPU (Ir a la seccion 6).')
+else:
+  print(f'Ejecutando con la GPU: {jax.local_devices()[0].device_kind}')
+
+# Make sure everything we need is on the path.
+import sys
+sys.path.append('/opt/conda/lib/python3.8/site-packages')
+sys.path.append('/content/alphafold')
