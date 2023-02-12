@@ -1,2 +1,2 @@
 # AlphaFold
-[Instalar dependencias](#Instalación de dependencias)
+[Instalar dependencias](#Instalación_dedependencias)
