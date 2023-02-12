@@ -30,10 +30,11 @@ Y posteriormente revisar que el Hardware accelerator se encuentre en GPU (No deb
 Luego de verificar el tipo de procesador el cual se esté utilizando (GPU), se puede iniciar a
 [Instalar dependencias en este link](Archives/Descarga_de_dependencias.txt), debe de copiar el código que se encuentra dentro del mismo y pegarlo en una celda de Google Colab:
 
-![Cpy_1](Archives/Cpy_1.jpg)
+![Cpy_1](imgs/Cpy_1.jpg)
 
 
-![Cpy_2](Archives/Cpy_2.jpg)
+![Cpy_2](imgs/Cpy_2.jpg)
+
 Posteriormente ejecute el código de la celda que acaba de pegar.
 
 #### 2.2. Descarga de AlphaFold
@@ -46,10 +47,10 @@ Para crear una nueva celda en Google Colab, podemos usar el atajo de teclado Con
 #### 3.1 Definir secuencias y modelo
 Para iniciar la predicción debe de copiar el contenido de [este archivo](Archive/Hacer_prediccion) y pegarlo en una nueva celda de Google colab. Luego debe proporcionar en el espacio indicado la secuencia(s) de aminoácido(s) a la que usted desea conocer su estructura tridimensional: 
 
-![ejmeplo1](Archive/Ejemplo.jpg)
+![ejmeplo1](imgs/Ejemplo.jpg)
 Si solamente se inserta una sola entrada se usará el modelo Monomer, si proporcionas multiples entradas, será usado el modelo Multimer. Si se quiere utilizar el modo multimer para una sola entrada se debe activar la casilla use_multimer_model_for_monomers.
 
-![model1](Archive/model.jpg)
+![model1](imgs/model.jpg)
 #### 3.2 Busqueda en la base de datos
 
 Despues de indicar la secuencia copie, pegue y ejecute el [siguiente archivo](Archives/Busqueda_y_prediccion_en_la_base_de_datos.txt) para que las secuencias suministradas sean comparadas con la base de datos de AlphaFold, verá estadísticas sobre la alineación de secuencia múltiple (MSA) que utilizará AlphaFold. En particular, verá qué tan bien cada residuo está cubierto por secuencias similares en el MSA.
