@@ -60,3 +60,11 @@ Despues de indicar la secuencia copie, pegue y ejecute el [siguiente archivo](Ar
 ### 4. Predicción
 
 En el siguiente [archivo](Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt) encontrará el código necesario para la ejecución de de AlphaFold y la posterior visualización de la(s) prediccion(es).
+
+
+
+## Integrantes:
+
+Luis Angel Peña Diaz
+Hugo Francinsco Rincon Lopez
+Wilhelm David Buitrago Garcia
