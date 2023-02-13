@@ -61,8 +61,8 @@ Despues de indicar la secuencia copie, pegue y ejecute el [siguiente archivo](Ar
 
 En el siguiente [archivo](Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt) encontrará el código necesario para la ejecución de de AlphaFold y la posterior visualización de la(s) prediccion(es).
 
-![img1](imgs/Ejemp1.jpg)![img2](imgs/Ejemp2.jpg)
-![img3](imgs/Ejemp3.jpg)![img4](imgs/Ejemp4.jpg)
+![img1](imgs/Ejemp1.jpeg)![img2](imgs/Ejemp2.jpeg)
+![img3](imgs/Ejemp3.jpeg)![img4](imgs/Ejemp4.jpeg)
 # Integrantes:
 
 ## Universidad Nacional de Colombia - Sede de La Paz
