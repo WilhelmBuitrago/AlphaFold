@@ -65,6 +65,6 @@ En el siguiente [archivo](Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt) enco
 
 ## Integrantes:
 
-Luis Angel Peña Diaz
-Hugo Francinsco Rincon Lopez
-Wilhelm David Buitrago Garcia
+### Luis Angel Peña Diaz
+### Hugo Francinsco Rincon Lopez
+### Wilhelm David Buitrago Garcia
