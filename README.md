@@ -63,10 +63,10 @@ En el siguiente [archivo](Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt) enco
 
 
 
-## Integrantes:
+# Integrantes:
 
-Universidad Nacional de Colombia
-Sede de La Paz
+## Universidad Nacional de Colombia
+## Sede de La Paz
 
 ### Luis Angel Peña Diaz - Estudiante de pregrado en Ingeniería Mecatrónica - [lpenad@unal.edu.co](lpenad@unal.edu.co)
 ### Hugo Francinsco Rincon Lopez - Estudiante de pregrado en Ingeniería Mecatrónica - [hufrinconlo@unal.edu.co](hufrinconlo@unal.edu.co) 
