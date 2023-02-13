@@ -65,6 +65,9 @@ En el siguiente [archivo](Archives/Ejecutar_AlphaFold_y_ver_prediccion.txt) enco
 
 ## Integrantes:
 
-### Luis Angel Peña Diaz
-### Hugo Francinsco Rincon Lopez
-### Wilhelm David Buitrago Garcia
+Universidad Nacional de Colombia
+Sede de La Paz
+
+### Luis Angel Peña Diaz - Estudiante de pregrado en Ingeniería Mecatrónica - [lpenad@unal.edu.co](lpenad@unal.edu.co)
+### Hugo Francinsco Rincon Lopez - Estudiante de pregrado en Ingeniería Mecatrónica - [hufrinconlo@unal.edu.co](hufrinconlo@unal.edu.co) 
+### Wilhelm David Buitrago Garcia - Estudiante de pregrado en Ingeniería Mecatrónica - [wibuitragog@unal.edu.co](wibuitragog@unal.edu.co)
